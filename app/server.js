@@ -12,10 +12,10 @@ function timeChecker() {
     var miningTime = config.miningTimeHours*60000;
     console.log(`Gemint wird für ${config.miningTimeHours} Stunden(${miningTime}ms) ab ${config.miningStartingDayHour} Uhr.`);
 
-    if (nowHours > config.miningStartingDayHour) {
+    if (nowHours >= config.miningStartingDayHour) {
         console.log('Miner wird versucht zu starten...');
         miner.startMiner();
-        setTimeout(() => timeChecker(), miningTime + 10000); //miningTime + 10 Sekunden
+        setTimeout(() => timeChecker(), miningTime + 30000); //miningTime + 10 Sekunden
     } else {
         console.log('Miner läuft erst später.');
         setTimeout(() => timeChecker(), 60000); //1 Stunde
