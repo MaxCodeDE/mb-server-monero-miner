@@ -14,7 +14,9 @@ function timeChecker() {
 
     if (nowHours >= config.miningStartingDayHour) {
         console.log('Miner wird versucht zu starten...');
-        miner.startMiner();
+        miner.startMiner().then(() => {
+            console.log('Miner wurde gestartet!');
+        });
         setTimeout(() => timeChecker(), miningTime + 30000); //miningTime + 10 Sekunden
     } else {
         console.log('Miner läuft erst später.');

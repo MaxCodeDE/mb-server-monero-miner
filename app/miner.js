@@ -21,12 +21,13 @@ module.exports = {
 
         // Start miner
         await miner.start();
-        console.log('Miner wurde gestartet!');
 
         // Listen on events
         miner.on('found', () => console.log('Gefunden!'));
         miner.on('accepted', () => console.log('Akzeptiert!'));
         miner.on('update', (data) => {
+            var now = new Date();
+            console.log(`Uhrzeit: ${now.getHours()}:${now.getMinutes()} Uhr und ${now.getSeconds()} Sekunden`);
             console.log(`Hashes pro Sekunde: ${data.hashesPerSecond}`);
             console.log(`Alle hashes: ${data.totalHashes}`);
             console.log(`Akzeptierte hashes: ${data.acceptedHashes}`);
